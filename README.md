@@ -1,7 +1,7 @@
-rax-kickme
+RAX-kickme
 ==========
 
-Spin Cloud Server up in Rackspace Cloud, fetch and execute script
+Spin Cloud Server up in Rackspace Cloud, fetch and execute script at boot time.
 
 ## Quick set-up
 
@@ -17,13 +17,24 @@ fetch current Launch Configuration of Scaling Group:
 http GET https://$REGION.autoscale.api.rackspacecloud.com/v1.0/$ACCOUNT_ID/groups/$SCALING_GROUP_ID/launch X-Auth-Token:$TOKEN > as.json
 ```
 
-Generate base64 encoded file to run at boot time as follow. That file should fetch a file from a trusted Internet location (e.g. private GitHub repository):
+Generate base64 encoded file to run at boot time as follow. That file should fetch a file from trusted Internet location (e.g. private GitHub repository).
+
+To make Cloud Servers in scaling group run ```kickme.sh```, fill out ```launchConfiguration:args:personality:contents```(see ```as.json.template```) with the output of the following command (*base64* encoding):
 
 ```
-echo -n "* * * * * root    curl -s https://raw.githubusercontent.com/siso/rax-kickme/master/kickme.sh | /bin/bash > /dev/null" | base64
+cat | base64 << EOF
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+* * * * * root    curl -s https://raw.githubusercontent.com/siso/rax-kickme/master/kickme.sh | /bin/bash > /dev/null
+EOF
 ```
 
-and use that output as value for the key ```launchConfiguration:args:personality:contents```, as exemplificated in ```as.json.template```.
+Eventually update *launch configuration* of Scaling Group:
+
+```
+http PUT https://$REGION.autoscale.api.rackspacecloud.com/v1.0/$ACCOUNT_ID/groups/$SCALING_GROUP_ID/launch X-Auth-Token:$TOKEN < as.json
+```
 
 ## License
 
