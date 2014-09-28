@@ -18,7 +18,7 @@
         "personality": [
             {
                 "path": "/etc/cron.d/kickme",
-                "contents": "U0hFTEw9L2Jpbi9iYXNoClBBVEg9L3NiaW46L2JpbjovdXNyL3NiaW46L3Vzci9iaW4KTUFJTFRPPXJvb3QKKiAqICogKiAqIHJvb3QgICAgY3VybCAtcyBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vc2lzby9yYXgtYXV0b3NjYWxlci9tYXN0ZXIva2lja21lLnNoIHwgL2Jpbi9iYXNoID4gL2Rldi9udWxsCg=="
+                "contents": "U0hFTEw9L2Jpbi9iYXNoClBBVEg9L3NiaW46L2JpbjovdXNyL3NiaW46L3Vzci9iaW4KTUFJTFRPPXJvb3QKKiAqICogKiAqIHJvb3QgICAgY3VybCAtcyBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vc2lzby9yYXgta2lja21lL21hc3Rlci9raWNrbWUuc2ggfCAvYmluL2Jhc2ggPiAvZGV2L251bGwK"
             }
         ]
         }
