@@ -1,9 +1,8 @@
 #!/usr/bin/env sh
 
-# Example: install Python Pyrax package with PIP
-#yum -y install python-pip
-#/usr/bin/yes | pip install pyrax
-
 echo "Alive'n'kickin'" > /kicked.txt
+
+# Eventually comment rax-kick cronjob out, to disable it
+cat /etc/cron.d/kickme | sed "s/^/#/g" > /etc/cron.d/kickme
 
 exit 0
